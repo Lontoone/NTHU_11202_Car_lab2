@@ -14,7 +14,7 @@ class AstarNode:
         self.g = abs(start[0] - x + start[1]-y)
         self.h = abs(goal[0] - x + goal[1]-y)
 
-        self.h_cost = 1.05
+        self.h_cost = 1.0
         self.cost = self.g + self.h *self.h_cost
 
         self.parent = None

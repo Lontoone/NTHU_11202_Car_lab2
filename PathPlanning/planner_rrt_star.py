@@ -73,7 +73,18 @@ class PlannerRRTStar(Planner):
                 goal_node = near_node
                 break
                 
-            # TODO: Re-Parent & Re-Wire
+            # TODO: Re-Parent & Re-Wire            
+            # sort             
+            nearst_parent = sorted(self.ntree.values(), key=lambda x: self.cost[x]  if x is not None and utils.distance(x ,new_node ) < 100  else 9999)[0]
+            # Re-Parent & Re-Wire
+            self.ntree[new_node] = nearst_parent
+            self.cost[new_node] = cost + self.cost[nearst_parent]
+            #print("new_node" , new_node   )       
+            #print("nearst_parent" , nearst_parent)       
+            #print("nearst_parent cost " , self.cost[new_node] )       
+            #print("")
+           
+
 
             # Draw
             if img is not None:
@@ -103,3 +114,4 @@ class PlannerRRTStar(Planner):
             n = self.ntree[n] 
         path.append(goal)
         return path
+

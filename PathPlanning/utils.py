@@ -32,5 +32,14 @@ def pos_int(p):
     return (int(p[0]), int(p[1]))
 
 def distance(n1, n2):
-        d = np.array(n1) - np.array(n2)
-        return np.hypot(d[0], d[1])
+    #if(n1 or n2 is None):
+        #return 999
+    d = np.array(n1) - np.array(n2)
+    return np.hypot(d[0], d[1])
+
+
+def distance2(n1, n2):
+    if(n1 or n2 is None):
+        return 0
+    d = np.array(n1) - np.array(n2)
+    return np.hypot(d[0], d[1])
